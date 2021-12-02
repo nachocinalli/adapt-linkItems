@@ -1,0 +1,22 @@
+.linkitems {
+  &__item > div {
+    pointer-events: none;
+  }
+  &__widget.has-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  &__widget.has-columns &__item {
+    width: 100%;
+
+    @media (min-width: @device-width-small) {
+      width: 50%;
+    }
+  }
+  &__widget.has-columns &__item-inner {
+    margin: 0.5rem;
+  }
+}
