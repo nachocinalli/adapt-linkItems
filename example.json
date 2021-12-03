@@ -14,8 +14,7 @@
   "_percentInviewVertical": 10,
   "_transitionSpeed": 200,
   "_columns": 3,
-  "_items": [
-    {
+  "_items": [{
       "title": "Heading 1",
       "body": "<p>This is display text 1.</p>",
       "_graphic": {
@@ -55,6 +54,22 @@
       "_forceDownload": false,
       "_isResourceItem": true,
       "_resourceItemIndex": 0,
+      "_classes": ""
+    },
+    {
+      "title": "Adapt model",
+      "body": "",
+      "_graphic": {
+        "src": "",
+        "alt": ""
+      },
+      "_link": "",
+      "filename": "",
+      "_forceDownload": false,
+      "_isResourceItem": false,
+      "_resourceItemIndex": 0,
+      "_isAdaptModel": true,
+      "_adaptModelId": "c-05",
       "_classes": ""
     }
   ]

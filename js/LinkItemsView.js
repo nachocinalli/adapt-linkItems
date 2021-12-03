@@ -1,3 +1,4 @@
+import Adapt from 'core/js/adapt';
 import ComponentView from 'core/js/views/componentView';
 
 class LinkItemsView extends ComponentView {
@@ -46,6 +47,16 @@ class LinkItemsView extends ComponentView {
   onClick(event) {
     const $item = $(event.currentTarget).closest('.linkitems__item');
     const itemIndex = $item.data('index');
+    const itemModel = this.model.getItem(itemIndex);
+    const _isAdaptModel = itemModel.get('_isAdaptModel');
+
+    if (_isAdaptModel) {
+      event.preventDefault();
+      const _adaptModelId = itemModel.get('_adaptModelId');
+      if (Adapt.findById(_adaptModelId)) {
+        Adapt.notify.popup({ _id: _adaptModelId, _classes: itemModel.get('_classes') });
+      }
+    }
     this.model.toggleItemsState(itemIndex);
   }
 

@@ -150,12 +150,12 @@
 						}
 					},
 					"_link": {
-                        "type": "string",
-                        "required": true,
-                        "title": "Link",
-                        "inputType": "Asset",
-                        "validators": ["required"]
-                    },
+						"type": "string",
+						"required": true,
+						"title": "Link",
+						"inputType": "Asset",
+						"validators": ["required"]
+					},
 					"filename": {
 						"type": "string",
 						"required": false,
@@ -188,6 +188,23 @@
 						"inputType": "Number",
 						"validators": ["required", "number"],
 						"help": "Resource item index"
+					},
+					"_isAdaptModel": {
+						"type": "boolean",
+						"default": false,
+						"title": "Is Adapt Model",
+						"inputType": "Checkbox",
+						"validators": [],
+						"help": "Link to adapt model?"
+					},
+					"_adaptModelId": {
+						"type": "string",
+						"required": false,
+						"default": "",
+						"title": "Adapt model id",
+						"inputType": "text",
+						"validators": [],
+						"help": "Adapt model id"
 					},
 					"_classes": {
 						"type": "string",

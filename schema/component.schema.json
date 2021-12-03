@@ -134,6 +134,18 @@
                 "description": "Resource item index",
                 "default": 0
               },
+              "_isAdaptModel": {
+                "type": "boolean",
+                "title": "Is Adapt model",
+                "description": "Link to adapt model?",
+                "default": false
+              },
+              "_adaptModelId": {
+                "type": "string",
+                "title": "Adapt model id",
+                "description": "Adapt model id",
+                "default": ""
+              },
               "_classes": {
                 "type": "string",
                 "title": "Custom classes",
