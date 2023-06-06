@@ -1,4 +1,6 @@
-import Adapt from 'core/js/adapt';
+import components from 'core/js/components';
+import data from 'core/js/data';
+import notify from 'core/js/notify';
 import ComponentView from 'core/js/views/componentView';
 
 class LinkItemsView extends ComponentView {
@@ -22,16 +24,20 @@ class LinkItemsView extends ComponentView {
     });
 
     if (this.model.get('_animateItems')) {
-      this.$('.linkitems__widget').on('onscreen.animate', this.checkIfOnScreen.bind(this));
+      this.$('.linkitems__widget').on(
+        'onscreen.animate',
+        this.checkIfOnScreen.bind(this)
+      );
     }
 
     if (this.model.get('_setCompletionOn') !== 'inview') return;
     this.setupInviewCompletion();
-
   }
 
   checkIfOnScreen({ currentTarget }, { percentInviewVertical }) {
-    if (percentInviewVertical < this.model.get('_percentInviewVertical')) return;
+    if (percentInviewVertical < this.model.get('_percentInviewVertical')) {
+      return;
+    }
 
     $(currentTarget).off('onscreen.animate');
     this.animateItems();
@@ -40,7 +46,7 @@ class LinkItemsView extends ComponentView {
   animateItems() {
     const _transitionSpeed = this.model.get('_transitionSpeed');
     this.model.getChildren().forEach((item, index) => {
-      setTimeout(() => item.set('_isAnimated', true), (_transitionSpeed * index));
+      setTimeout(() => item.set('_isAnimated', true), _transitionSpeed * index);
     });
   }
 
@@ -53,8 +59,12 @@ class LinkItemsView extends ComponentView {
     if (_isAdaptModel) {
       event.preventDefault();
       const _adaptModelId = itemModel.get('_adaptModelId');
-      if (Adapt.findById(_adaptModelId)) {
-        Adapt.notify.popup({ _id: _adaptModelId, _classes: itemModel.get('_classes') });
+      const model = data.findById(_adaptModelId);
+
+      if (model) {
+        const View = components.getViewClass(model);
+        const view = new View({ model });
+        notify.popup({ _view: view, _classes: itemModel.get('_classes') });
       }
     }
     this.model.toggleItemsState(itemIndex);
