@@ -1,8 +1,8 @@
-import Adapt from 'core/js/adapt';
+import components from 'core/js/components';
 import LinkItemsModel from './LinkItemsModel';
 import LinkItemsView from './LinkItemsView';
 
-export default Adapt.register('linkItems', {
+export default components.register('linkItems', {
   model: LinkItemsModel,
   view: LinkItemsView
 });
